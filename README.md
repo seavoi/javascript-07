@@ -5,7 +5,7 @@ Creation:
 2. Create components 
 3. Ran "npm install --save react-router-dom" from terminal
 4. Create routes
-5. Install Axios ""
+5. Install Axios "npm install --save axios"
 
 <!-- NOTES FROM SEAN (END) -->
 
