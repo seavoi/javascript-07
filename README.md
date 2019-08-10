@@ -2,6 +2,10 @@
 
 Creation:
 1. Ran "npx create-react-app javascript-07" from terminal
+2. Create components 
+3. Ran "npm install --save react-router-dom" from terminal
+4. Create routes
+5. Install Axios ""
 
 <!-- NOTES FROM SEAN (END) -->
 
