@@ -19,10 +19,16 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.performSearch();
+    this.performSearch("rainbow");
   }
 
-  performSearch = (query = 'rainbow') =>  { /* Sets first loaded results to be 'rainbow' */
+  isTrue = (istrue = true) => {
+    this.setState({
+      loading: istrue
+    });
+  }
+
+  performSearch = (query) =>  {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
@@ -36,7 +42,6 @@ export default class App extends Component {
   }
 
   render() {
-    // console.log(this.state.photos);
     return (
       <BrowserRouter>
         <div className="container">
@@ -48,16 +53,7 @@ export default class App extends Component {
             :
             <Switch>
               <Route exact path="/" render={props => <Gallery data={this.state.photos} {...props} />} />
-
-              <Route path="/search" render={props => <Gallery data={this.state.photos} {...props} />} />
-
-              <Route path="/red" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route path="/orange" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route path="/yellow" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route path="/green" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route path="/blue" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route path="/indigo" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route path="/violet" render={props => <Gallery data={this.state.photos} {...props} />} />
+              <Route exact path="/search/:term" render={props => <Gallery search={this.performSearch} data={this.state.photos} {...props} />} />
             </Switch>
           }
         </div>
