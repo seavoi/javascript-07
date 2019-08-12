@@ -41,14 +41,16 @@ export default class App extends Component {
       <BrowserRouter>
         <div className="container">
           <Search onSearch={this.performSearch} />
-          <Nav onClick={this.performSearch} />
-          // Loading indicators
+          <Nav istrue={this.isTrue} onClick={this.performSearch} />
           {
             (this.state.loading)
             ? <p>Loading...</p>
             :
             <Switch>
               <Route exact path="/" render={props => <Gallery data={this.state.photos} {...props} />} />
+
+              <Route path="/search" render={props => <Gallery data={this.state.photos} {...props} />} />
+
               <Route path="/red" render={props => <Gallery data={this.state.photos} {...props} />} />
               <Route path="/orange" render={props => <Gallery data={this.state.photos} {...props} />} />
               <Route path="/yellow" render={props => <Gallery data={this.state.photos} {...props} />} />
