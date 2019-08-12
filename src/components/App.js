@@ -52,8 +52,9 @@ export default class App extends Component {
             ? <p>Loading...</p>
             :
             <Switch>
-              <Route exact path="/" render={props => <Gallery data={this.state.photos} {...props} />} />
-              <Route exact path="/search/:term" render={props => <Gallery search={this.performSearch} data={this.state.photos} {...props} />} />
+              <Route exact path="/" render={(props) => <Gallery data={this.state.photos} {...props} />} />
+              <Route exact path="/:query" render={(props) => <Gallery data={this.state.photos} {...props} />} />
+              <Route exact path="/search/:query" render={(props) => <Gallery performSearch={this.performSearch} data={this.state.photos} {...props} />} />
             </Switch>
           }
         </div>
